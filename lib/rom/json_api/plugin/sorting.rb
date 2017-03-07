@@ -15,7 +15,7 @@ module ROM
         module InstanceInterface
           def sort(*attributes)
             add_params(
-              sort: (dataset.params[:sort] + attributes).flatten.join(',')
+              sort: (dataset.params[:sort].to_a + attributes).flatten.join(',')
             )
           end
         end

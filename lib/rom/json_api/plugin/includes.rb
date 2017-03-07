@@ -13,9 +13,9 @@ module ROM
 
         # @api private
         module InstanceInterface
-          def include(*includes)
+          def includes(*includes)
             add_params(
-              include: (dataset.params[:include] + includes).flatten.join(',')
+              include: (dataset.params[:include].to_a + includes).flatten.join(',')
             )
           end
         end
