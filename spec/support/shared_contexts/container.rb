@@ -2,7 +2,7 @@ RSpec.shared_context 'container' do
   let(:base_url) { 'http://json-api.com' }
   let(:configuration) { ROM::Configuration.new(:json_api, uri: base_url) }
   let(:users_relation_class) do
-    Class.new(ROM::Relation[:json_api]) do
+    Class.new(ROM::JsonApi::Relation) do
       use :filters
       use :includes
       use :pagination
@@ -19,8 +19,9 @@ RSpec.shared_context 'container' do
       end
     end
   end
+
   let(:tasks_relation_class) do
-    Class.new(ROM::Relation[:json_api]) do
+    Class.new(ROM::JsonApi::Relation) do
       schema(:tasks) do
         attribute :id, ROM::Types::String.meta(primary_key: true)
         attribute :user_id, ROM::Types::Int.meta(foreign_key: true, target: :users)
@@ -39,6 +40,6 @@ RSpec.shared_context 'container' do
     configuration
   end
   let(:container) { ROM.container(configuration) }
-  let(:users_relation) { container.relation(:users) }
-  let(:tasks_relation) { container.relation(:tasks) }
+  let(:users_relation) { container.relations[:users] }
+  let(:tasks_relation) { container.relations[:tasks] }
 end

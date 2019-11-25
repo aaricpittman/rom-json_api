@@ -6,7 +6,6 @@ module ROM
       class Response
         def call(response, dataset)
           data = JSON.parse(response.body, symbolize_names: true)[:data]
-
           Array([data]).flatten.map do |record|
             record.merge(record.delete(:attributes))
           end

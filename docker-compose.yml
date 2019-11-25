@@ -1,0 +1,22 @@
+version: '3.7'
+services:
+  gem:
+    build: .
+    command: /bin/bash
+    depends_on:
+      - example
+    image: rom-json-api
+    stdin_open: true
+    tty: true
+    volumes:
+      - .:/gem:delegated
+      - bundle:/bundle
+    volumes:
+      - .:/gem
+  example:
+    image: json-api-example
+    ports:
+      - "5678:8080"
+
+volumes:
+  bundle:

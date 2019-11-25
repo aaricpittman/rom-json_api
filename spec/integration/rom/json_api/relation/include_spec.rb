@@ -12,7 +12,7 @@ RSpec.describe 'ROM::JsonApi::Relation', method: '#include' do
 
   subject!(:result) { users_relation.includes(:tasks).to_a }
 
-  it do
+  it "", :focus do
     expect(result[0]).to eq(
       id: user_1.id,
       name: user_1.name,
