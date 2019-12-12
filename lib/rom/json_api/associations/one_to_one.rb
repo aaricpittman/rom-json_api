@@ -1,8 +1,7 @@
 module ROM
   module JsonApi
-    class Association
+    class Associations
       class OneToOne < OneToMany
-        result :one
       end
     end
   end

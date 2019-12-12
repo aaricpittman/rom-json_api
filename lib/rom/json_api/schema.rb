@@ -1,0 +1,15 @@
+require "rom/json_api/associations"
+
+module ROM
+  module JsonApi
+    class Schema < ROM::HTTP::Schema
+      def finalize_associations!(relations:)
+        super do
+          associations.map do |definition|
+            JsonApi::Associations.const_get(definition.type).new(definition, relations)
+          end
+        end
+      end
+    end
+  end
+end

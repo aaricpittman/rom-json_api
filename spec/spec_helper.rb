@@ -10,6 +10,7 @@ SPEC_ROOT = root = Pathname(__FILE__).dirname
 require 'webmock/rspec'
 require 'faker'
 require 'fabrication'
+require 'pry'
 
 Dir[root.join('support/**/*.rb')].each do |f|
   require f

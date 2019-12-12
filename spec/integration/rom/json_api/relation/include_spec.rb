@@ -10,9 +10,10 @@ RSpec.describe 'ROM::JsonApi::Relation', method: '#include' do
     stub_request(:get, url).to_return(status: 200, body: response)
   end
 
-  subject!(:result) { users_relation.includes(:tasks).to_a }
+  subject!(:result) { users_relation.combine(:tasks).to_a }
 
-  it do
+  it "", :focus do
+    binding.pry
     expect(result[0]).to eq(
       id: user_1.id,
       name: user_1.name,

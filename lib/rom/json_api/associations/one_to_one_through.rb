@@ -1,8 +1,10 @@
 module ROM
   module JsonApi
-    class Association
+    class Associations
       class OneToOneThrough < ManyToMany
-        result :one
+        def call(**kwargs)
+          binding.pry
+        end
       end
     end
   end
